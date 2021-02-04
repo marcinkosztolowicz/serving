@@ -5,9 +5,25 @@ the initialization code from TensorFlow Serving's WORKSPACE file.
 """
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
 def tf_serving_workspace():
     """All TensorFlow Serving external dependencies."""
+
+    git_repository(
+	name = "pybind11_bazel",
+	commit = "f22df0e57ba664c2d3cf439ddfb7f8804e3f36c1",
+	remote = "https://github.com/pybind/pybind11_bazel.git",
+    )
+
+    http_archive(
+	name = "pybind11",
+	build_file = "@pybind11_bazel//:pybind11.BUILD",
+	strip_prefix = "pybind11-2.4.3",
+	urls = [
+	     "https://github.com/pybind/pybind11/archive/v2.4.3.tar.gz",
+	],
+    )
 
     # ===== Bazel package rules dependency =====
     http_archive(

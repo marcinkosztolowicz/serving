@@ -104,4 +104,6 @@ if ! docker pull ${IMAGE} ; then
 fi
 
 echo "== Running cmd: ${CMD}"
+echo "== Running run_opts: ${RUN_OPTS[@]}"
+echo "== Running image: ${IMAGE}"
 docker run ${RUN_OPTS[@]} ${IMAGE} bash -c "$(get_switch_user_cmd) ${CMD}"

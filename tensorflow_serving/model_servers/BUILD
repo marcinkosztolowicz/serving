@@ -319,6 +319,7 @@ SUPPORTED_TENSORFLOW_OPS = if_v2([]) + if_not_v2([
     "@org_tensorflow//tensorflow/contrib:contrib_ops_op_lib",
 ]) + [
     "@org_tensorflow_text//tensorflow_text:ops_lib",
+    "//tensorflow_serving/custom_ops/scann/scann/scann_ops/cc:scann_ops"    
 ]
 
 cc_library(
