@@ -280,7 +280,19 @@ cc_library(
         "@com_google_absl//absl/strings",
         "@com_google_absl//absl/types:optional",
         "@com_googlesource_code_re2//:re2",
+        "@curl",
         "@org_tensorflow//tensorflow/core:lib",
+    ],
+)
+
+cc_test(
+    name = "http_rest_api_util_test",
+    srcs = ["http_rest_api_util_test.cc"],
+    deps = [
+        ":http_rest_api_util",
+        "//tensorflow_serving/core/test_util:test_main",
+        "//tensorflow_serving/test_util",
+        "@org_tensorflow//tensorflow/core:test",
     ],
 )
 
@@ -319,6 +331,7 @@ SUPPORTED_TENSORFLOW_OPS = if_v2([]) + if_not_v2([
     "@org_tensorflow//tensorflow/contrib:contrib_ops_op_lib",
 ]) + [
     "@org_tensorflow_text//tensorflow_text:ops_lib",
+    "@com_google_scann//scann/scann_ops/cc:scann_ops_static",
 ]
 
 cc_library(

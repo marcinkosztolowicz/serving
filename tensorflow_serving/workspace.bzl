@@ -80,3 +80,11 @@ def tf_serving_workspace():
             "https://github.com/google/glog/archive/028d37889a1e80e8a07da1b8945ac706259e5fd8.tar.gz",
         ],
     )
+    
+    http_archive(
+        name = "com_google_scann",
+        strip_prefix = "google-research-d0a536f48b1d1da721a41a83702d0d2c79fe2ae4/scann",
+        url = "https://github.com/google-research/google-research/archive/d0a536f48b1d1da721a41a83702d0d2c79fe2ae4.zip",
+        patches = ["@//third_party/scann:tf_serving.patch"],
+        patch_args = ["-p1"],
+    )
